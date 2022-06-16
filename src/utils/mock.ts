@@ -1,4 +1,5 @@
 import { AuthorType, Post } from '../@types'
+import doctorCare from '../Assets/img/doctorCare.png'
 import profilePhoto1 from '../Assets/img/user-profile-photo-1.png'
 import profilePhoto2 from '../Assets/img/user-profile-photo-2.png'
 import profilePhoto3 from '../Assets/img/user-profile-photo-3.png'
@@ -24,11 +25,24 @@ export const posts = [
     content: `
       Fala galeraa 👋 <br/><br/>
       Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀<br/><br/>
+      <img src="${doctorCare}" alt="doctor-care" className="max-w-full rounded-lg mx-auto"/><br/><br/>
       👉 <a class="text-primary font-bold" href="https://marina.silva/doctorcare" target="_blank">marina.silva/doctorcare</a>
       <br/><br/>
       <span class="text-primary font-bold">#novoprojeto #nlw #rocketseat</span>
       `,
-    comments: []
+    comments: [
+      {
+        author: {
+          id: 1,
+          name: 'Maria Clara',
+          job: 'Full Cycle Dev',
+          profilePhoto
+        },
+        content: 'Incrível!!! Eu amei este projeto, Marina! 💖🔥🚀',
+        createdAt: 'há 10 minutos',
+        likes: 13
+      }
+    ]
   },
   {
     id: 2,
@@ -56,7 +70,7 @@ export const posts = [
           profilePhoto
         },
         content: 'Muito bom Jonas! Parabéns!!👏👏',
-        createdAt: 'há 6 horas',
+        createdAt: 'há 4 horas',
         likes: 13
       },
       {
@@ -78,7 +92,7 @@ export const posts = [
           profilePhoto: profilePhoto4
         },
         content: 'Que demais Jonas🔥🚀',
-        createdAt: 'há 6 horas',
+        createdAt: 'há 3 horas',
         likes: 13
       },
       {
@@ -89,7 +103,7 @@ export const posts = [
           profilePhoto: profilePhoto2
         },
         content: 'Obrigado pessoal! 🚀❤️',
-        createdAt: 'há 3 horas',
+        createdAt: 'há 1 hora',
         likes: 1
       }
     ]
