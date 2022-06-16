@@ -8,13 +8,13 @@ import { authUser } from '../../utils/mock'
 export function LeftContent() {
   return (
     <>
-      <aside className="mx-auto h-fit w-full overflow-hidden rounded-lg bg-backgroundLight md:w-64">
+      <aside className="mx-auto h-fit w-full min-w-[200px] overflow-hidden rounded-lg bg-backgroundLight md:w-64">
         <div id="user-pictures" className="w-full">
           <div className="z-10">
             <img
               src={userBackground}
               alt="User Profile Photo"
-              className="w-full md:w-auto"
+              className="w-full lg:w-auto"
             />
           </div>
           <div className="relative z-20 mx-auto -my-8 w-fit rounded-lg border-2 border-primary bg-backgroundLight p-1 transition-all hover:-translate-y-1 hover:cursor-pointer">
@@ -34,8 +34,8 @@ export function LeftContent() {
           </span>
         </div>
         <hr className="m-0 border-gray-600"></hr>
-        <div id="user-edit" className="py-6">
-          <button className="mx-auto block rounded-lg border-[1px] border-primary p-3 font-bold text-primary transition-colors hover:border-secondary hover:text-secondary">
+        <div id="user-edit" className="py-6 px-2">
+          <button className="mx-auto block rounded-lg border-[1px] border-primary p-3 text-xs font-bold text-primary transition-colors hover:border-secondary hover:text-secondary md:text-base">
             <RiPencilLine className="inline-block" /> Edite seu perfil
           </button>
         </div>

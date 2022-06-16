@@ -6,7 +6,7 @@ import { Post } from '../Post'
 
 export function RightContent() {
   return (
-    <main className="flex w-full flex-col gap-8">
+    <main className="flex flex-1 flex-col gap-4 lg:gap-8">
       <NewPost />
       {posts.map(post => (
         <Post
