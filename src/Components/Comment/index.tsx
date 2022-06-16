@@ -14,6 +14,7 @@ export function Comment(comment: CommentType) {
           <img
             src={comment.author.profilePhoto}
             alt={comment.author.name + ' profile photo'}
+            className="w-16 rounded"
           />
         </div>
         <div

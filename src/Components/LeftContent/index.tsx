@@ -13,7 +13,7 @@ export function LeftContent() {
           <div className="z-10">
             <img
               src={userBackground}
-              alt="User Profile Photo"
+              alt="User Profile Background"
               className="w-full lg:w-auto"
             />
           </div>
@@ -21,7 +21,7 @@ export function LeftContent() {
             <img
               src={authUser.profilePhoto}
               alt="User Profile Photo"
-              className="w-24 md:w-auto"
+              className="w-24 md:w-16"
             />
           </div>
         </div>
