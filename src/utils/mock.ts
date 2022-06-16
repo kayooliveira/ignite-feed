@@ -8,10 +8,10 @@ import profilePhoto from '../Assets/img/user-profile-photo.png'
 
 export const authUser = {
   id: 1,
-  name: 'Maria Clara',
-  profilePhoto,
+  name: 'Kayo Oliveira',
+  profilePhoto: 'https://github.com/kayooliveira.png',
   job: 'Full Cycle DEV',
-  company: 'Rocketseat'
+  company: 'Life.Vet'
 } as AuthorType
 
 export const posts = [
@@ -33,12 +33,7 @@ export const posts = [
       `,
     comments: [
       {
-        author: {
-          id: 1,
-          name: 'Maria Clara',
-          job: 'Full Cycle Dev',
-          profilePhoto
-        },
+        author: authUser,
         content: 'Incrível!!! Eu amei este projeto, Marina! 💖🔥🚀',
         createdAt: 'há 10 minutos',
         likes: 13
@@ -64,12 +59,7 @@ export const posts = [
       <span class="text-primary font-bold">#uiux #userexperience</span>`,
     comments: [
       {
-        author: {
-          id: 1,
-          name: 'Maria Clara',
-          job: 'Full Cycle Dev',
-          profilePhoto
-        },
+        author: authUser,
         content: 'Muito bom Jonas! Parabéns!!👏👏',
         createdAt: 'há 4 horas',
         likes: 13
