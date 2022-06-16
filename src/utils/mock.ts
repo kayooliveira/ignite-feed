@@ -45,7 +45,8 @@ export const posts = [
 
       Acesse e deixe seu feedback 👉 <a class="text-primary font-bold" href="https://jonas.design" target="_blank">jonas.design</a><br/><br/>
 
-      <br/>#uiux #userexperience`,
+      <br/>
+      <span class="text-primary font-bold">#uiux #userexperience</span>`,
     comments: [
       {
         author: {
