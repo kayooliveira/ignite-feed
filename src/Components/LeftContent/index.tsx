@@ -7,13 +7,21 @@ import { authUser } from '../../utils/mock'
 export function LeftContent() {
   return (
     <>
-      <aside className="h-fit w-64 overflow-hidden rounded-lg bg-backgroundLight">
+      <aside className="mx-auto h-fit w-full overflow-hidden rounded-lg bg-backgroundLight md:w-64">
         <div id="user-pictures" className="w-full">
           <div className="z-10">
-            <img src={userBackground} alt="User Profile Photo" />
+            <img
+              src={userBackground}
+              alt="User Profile Photo"
+              className="w-full md:w-auto"
+            />
           </div>
           <div className="relative z-20 mx-auto -my-8 w-fit rounded-lg border-2 border-primary bg-backgroundLight p-1 transition-all hover:-translate-y-1 hover:cursor-pointer">
-            <img src={authUser.profilePhoto} alt="User Profile Photo" />
+            <img
+              src={authUser.profilePhoto}
+              alt="User Profile Photo"
+              className="w-24 md:w-auto"
+            />
           </div>
         </div>
         <div id="user-info" className="my-8 w-full py-2 text-center text-white">

@@ -8,7 +8,7 @@ export function App() {
   return (
     <div className="min-h-screen w-screen bg-background">
       <Header />
-      <div className="flex h-full max-h-full flex-shrink-0 gap-8 px-40 py-8">
+      <div className="mx-auto flex h-full max-h-full max-w-screen-2xl flex-shrink-0 flex-col gap-8 px-10 py-8 md:flex-row ">
         <LeftContent />
         <RightContent />
       </div>
