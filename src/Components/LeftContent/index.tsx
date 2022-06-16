@@ -7,7 +7,7 @@ import { authUser } from '../../utils/mock'
 export function LeftContent() {
   return (
     <>
-      <section className="h-fit w-64 overflow-hidden rounded-lg bg-backgroundLight">
+      <aside className="h-fit w-64 overflow-hidden rounded-lg bg-backgroundLight">
         <div id="user-pictures" className="w-full">
           <div className="z-10">
             <img src={userBackground} alt="User Profile Photo" />
@@ -26,7 +26,7 @@ export function LeftContent() {
             <RiPencilLine className="inline-block" /> Edite seu perfil
           </button>
         </div>
-      </section>
+      </aside>
     </>
   )
 }
