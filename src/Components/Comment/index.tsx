@@ -4,6 +4,7 @@ import { FaTrash } from 'react-icons/fa'
 
 import { CommentType } from '../../@types'
 import { authUser } from '../../utils/mock'
+import { Modal } from './Modal'
 
 export function Comment(comment: CommentType) {
   return (
@@ -22,10 +23,16 @@ export function Comment(comment: CommentType) {
           <p className="font-bold text-white">{comment.author.name}</p>
           <span className="text-xs text-gray-600">{comment.createdAt}</span>
           <h4 className="mt-5 text-white ">{comment.content}</h4>
-          {comment.author.name === authUser.name && (
-            <span className="absolute right-4 cursor-pointer text-primary">
-              <FaTrash />
-            </span>
+          {comment.author.id === authUser.id && (
+            <Modal
+              trigger={
+                <>
+                  <span className="absolute right-4 top-4 cursor-pointer text-primary">
+                    <FaTrash />
+                  </span>
+                </>
+              }
+            />
           )}
           <div className="absolute -bottom-8 left-0 flex w-full items-center text-lg font-bold">
             {comment.author.id === authUser.id ? (
