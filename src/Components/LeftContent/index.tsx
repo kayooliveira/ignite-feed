@@ -1,3 +1,4 @@
+import Parser from 'html-react-parser'
 import React from 'react'
 import { RiPencilLine } from 'react-icons/ri'
 
@@ -26,7 +27,11 @@ export function LeftContent() {
         </div>
         <div id="user-info" className="my-8 w-full py-2 text-center text-white">
           <p className="text-lg">{authUser.name}</p>
-          <span className="-my-2 text-xs text-gray-600">{authUser.job}</span>
+          <span className="-my-2 text-xs text-gray-600">
+            {authUser.job}
+            {authUser.company &&
+              Parser(` | <strong>${authUser.company}</strong>`)}
+          </span>
         </div>
         <hr className="m-0 border-gray-600"></hr>
         <div id="user-edit" className="py-6">

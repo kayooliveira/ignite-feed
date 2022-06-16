@@ -9,6 +9,7 @@ export type AuthorType = {
   profilePhoto: string
   name: string
   job: string
+  company?: string
 }
 
 export type CommentType = {

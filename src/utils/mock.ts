@@ -10,7 +10,8 @@ export const authUser = {
   id: 1,
   name: 'Maria Clara',
   profilePhoto,
-  job: 'Full Cycle DEV'
+  job: 'Full Cycle DEV',
+  company: 'Rocketseat'
 } as AuthorType
 
 export const posts = [
