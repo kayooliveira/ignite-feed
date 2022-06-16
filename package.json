@@ -7,10 +7,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@types/react-html-parser": "^2.0.2",
+    "html-react-parser": "^1.4.14",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-html-parser": "^2.0.2",
     "react-icons": "^4.4.0",
     "vitawind": "^2.0.0"
   },

@@ -1,5 +1,5 @@
+import Parser from 'html-react-parser'
 import React, { useState } from 'react'
-import Parser from 'react-html-parser'
 
 import { Post as PostType } from '../../@types'
 import { Comment } from '../Comment'
