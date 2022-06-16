@@ -4,7 +4,6 @@ import profilePhoto1 from '../Assets/img/user-profile-photo-1.png'
 import profilePhoto2 from '../Assets/img/user-profile-photo-2.png'
 import profilePhoto3 from '../Assets/img/user-profile-photo-3.png'
 import profilePhoto4 from '../Assets/img/user-profile-photo-4.png'
-import profilePhoto from '../Assets/img/user-profile-photo.png'
 
 export const authUser = {
   id: 1,
