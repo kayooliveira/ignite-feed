@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+
 interface IModal {
   trigger: JSX.Element
+  onSuccess: () => void
 }
 
-export function Modal({ trigger }: IModal) {
+export function Modal({ trigger, onSuccess }: IModal) {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleModal = () => {
@@ -38,7 +40,10 @@ export function Modal({ trigger }: IModal) {
                 Cancelar
               </button>
               <button
-                onClick={toggleModal}
+                onClick={() => {
+                  onSuccess()
+                  toggleModal()
+                }}
                 autoFocus
                 className="rounded-lg py-4 px-8 text-center font-bold text-red-500 transition-colors hover:bg-background focus:bg-backgroundComment"
               >
