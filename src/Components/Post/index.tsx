@@ -1,11 +1,40 @@
 import Parser from 'html-react-parser'
-import React, { useState } from 'react'
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 
-import { Post as PostType } from '../../@types'
+import { CommentType, Post as PostType } from '../../@types'
+import { authUser } from '../../utils/mock'
 import { Comment } from '../Comment'
 
 export function Post(post: PostType) {
-  const [comment, setComment] = useState<string>('')
+  const [comments, setComments] = useState<CommentType[]>(post.comments)
+  const [commentInput, setCommentInput] = useState<string>('')
+  function handleChange(e: ChangeEvent<HTMLTextAreaElement>) {
+    const input = e.target.value
+    if (input.trim() !== '') {
+      setCommentInput(e.target.value)
+    }
+  }
+
+  function handleAddNewComment(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const commentsIds = comments.map(comment => comment.id)
+    const highestId = Math.max(...commentsIds)
+
+    const newComment = {
+      id: highestId + 1,
+      author: authUser,
+      content: commentInput,
+      createdAt: new Date(),
+      likes: 0
+    }
+    setComments([...comments, newComment])
+    setCommentInput('')
+  }
+
+  function handleDeleteComment(id: number) {
+    setComments(comments.filter(comment => comment.id !== id))
+  }
+
   return (
     <>
       <div className="rounded-lg bg-backgroundLight p-8">
@@ -14,6 +43,7 @@ export function Post(post: PostType) {
             <img
               src={post.author.profilePhoto}
               alt={post.author.name + ' profile photo'}
+              className="w-24 md:w-16"
             />
           </div>
           <div id="author-info" className="ml-3 flex flex-col">
@@ -21,7 +51,7 @@ export function Post(post: PostType) {
               {post.author.name}
             </p>
             <span className="cursor-pointer  text-sm text-gray-600">
-              {post.author.job}
+              {post.author.job} | <strong>{post.author.company}</strong>
             </span>
           </div>
         </div>
@@ -29,30 +59,30 @@ export function Post(post: PostType) {
           {Parser(post.content)}
         </h4>
         <hr className="border-gray-600" />
-        <div id="post-reply">
+        <form onSubmit={handleAddNewComment} id="post-reply">
           <p className="my-4 text-lg font-bold text-white">
             Deixe seu feedback
           </p>
           <textarea
-            value={comment}
-            onChange={e => {
-              setComment(e.target.value)
-            }}
+            onChange={handleChange}
+            value={commentInput}
             className="w-full resize-none rounded-lg border-[1px] border-primary bg-background p-4 text-white outline-none ring-2 ring-transparent ring-offset-2 ring-offset-backgroundLight focus:border-transparent focus:ring-secondary"
           ></textarea>
-          {comment.trim() !== '' && (
-            <button className="my-4 rounded-lg bg-primary p-3 text-lg font-bold text-white transition-all hover:bg-secondary">
+          {commentInput.trim() !== '' && (
+            <button
+              type="submit"
+              title="Publicar novo comentário"
+              className="my-4 rounded-lg bg-primary p-3 text-lg font-bold text-white transition-all hover:bg-secondary"
+            >
               Publicar
             </button>
           )}
-        </div>
-        {post.comments.map(comment => (
+        </form>
+        {comments.map(comment => (
           <Comment
-            key={comment.author.name}
-            author={comment.author}
-            content={comment.content}
-            likes={comment.likes}
-            createdAt={comment.createdAt}
+            key={comment.id}
+            comment={comment}
+            handleDeleteComment={handleDeleteComment}
           />
         ))}
       </div>
