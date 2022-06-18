@@ -1,6 +1,5 @@
 import { AuthorType, Post } from '../@types'
 import doctorCare from '../Assets/img/doctorCare.png'
-import profilePhoto1 from '../Assets/img/user-profile-photo-1.png'
 import profilePhoto2 from '../Assets/img/user-profile-photo-2.png'
 import profilePhoto3 from '../Assets/img/user-profile-photo-3.png'
 import profilePhoto4 from '../Assets/img/user-profile-photo-4.png'
@@ -18,23 +17,25 @@ export const posts = [
     id: 1,
     author: {
       id: 5,
-      name: 'Marina Silva',
-      profilePhoto: profilePhoto1,
-      job: 'UI/UX Designer'
+      name: 'Gabriel Cardoso',
+      profilePhoto: 'https://i.imgur.com/lJ29Q2D.png',
+      job: 'Front End DEV',
+      company: 'Freelancer'
     },
     content: `
       Fala galeraa 👋 <br/><br/>
       Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀<br/><br/>
       <img src="${doctorCare}" alt="doctor-care" className="max-w-full rounded-lg mx-auto"/><br/><br/>
-      👉 <a class="text-primary font-bold" href="https://marina.silva/doctorcare" target="_blank">marina.silva/doctorcare</a>
+      👉 <a class="text-primary font-bold" href="https://gabriel.cardoso/doctorcare" target="_blank">gabriel.cardoso/doctorcare</a>
       <br/><br/>
       <span class="text-primary font-bold">#novoprojeto #nlw #rocketseat</span>
       `,
     comments: [
       {
+        id: 1,
         author: authUser,
         content: 'Incrível!!! Eu amei este projeto, Marina! 💖🔥🚀',
-        createdAt: 'há 10 minutos',
+        createdAt: new Date('2022-03-01 14:20:00'),
         likes: 13
       }
     ]
@@ -45,7 +46,8 @@ export const posts = [
       id: 2,
       name: 'Jonas Marques',
       profilePhoto: profilePhoto2,
-      job: 'Full Stack DEV'
+      job: 'Full Stack DEV',
+      company: 'Nubank'
     },
     content: `
       Fala pessoal 👋<br/><br/>
@@ -58,12 +60,14 @@ export const posts = [
       <span class="text-primary font-bold">#uiux #userexperience</span>`,
     comments: [
       {
+        id: 2,
         author: authUser,
         content: 'Muito bom Jonas! Parabéns!!👏👏',
-        createdAt: 'há 4 horas',
+        createdAt: new Date('2022-06-04 00:20:00'),
         likes: 13
       },
       {
+        id: 3,
         author: {
           id: 3,
           name: 'Gabriela Farias',
@@ -71,10 +75,11 @@ export const posts = [
           profilePhoto: profilePhoto3
         },
         content: 'Amei seu portifolio Jonas...❤️',
-        createdAt: 'há 6 horas',
+        createdAt: new Date('2022-09-02 00:20:00'),
         likes: 13
       },
       {
+        id: 4,
         author: {
           id: 6,
           name: 'Daniela Marques',
@@ -82,10 +87,11 @@ export const posts = [
           profilePhoto: profilePhoto4
         },
         content: 'Que demais Jonas🔥🚀',
-        createdAt: 'há 3 horas',
+        createdAt: new Date('2022-08-05 12:20:00'),
         likes: 13
       },
       {
+        id: 5,
         author: {
           id: 2,
           name: 'Jonas Marques ',
@@ -93,7 +99,7 @@ export const posts = [
           profilePhoto: profilePhoto2
         },
         content: 'Obrigado pessoal! 🚀❤️',
-        createdAt: 'há 1 hora',
+        createdAt: new Date('2022-12-07 05:20:00'),
         likes: 1
       }
     ]
