@@ -13,8 +13,9 @@ export type AuthorType = {
 }
 
 export type CommentType = {
+  id: number
   author: AuthorType
   content: string
-  createdAt: string
+  createdAt: Date
   likes: number
 }
