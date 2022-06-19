@@ -85,7 +85,7 @@ export function Post({ post, handleLikePost, handleUnlikePost }: PostProps) {
             </span>
           </div>
         </div>
-        <div id="post-time-info" className="flex flex-col items-end">
+        <div id="post-time-info">
           <time
             className="text-xs leading-3 text-gray-600 md:text-base"
             dateTime={formatISO(post.createdAt)}
@@ -93,23 +93,6 @@ export function Post({ post, handleLikePost, handleUnlikePost }: PostProps) {
           >
             {postDateFromNow}
           </time>
-          <button
-            onClick={likePost}
-            className={`nter flex items-center leading-8 ${
-              isLikedPost ? 'text-primary' : 'text-gray-600'
-            }`}
-          >
-            {isLikedPost ? (
-              <>
-                <AiFillLike className="mr-1 h-5 w-5" />
-              </>
-            ) : (
-              <>
-                <AiOutlineLike className="mr-1 h-5 w-5" />
-              </>
-            )}
-            <span>• {post.likes}</span>
-          </button>
         </div>
       </header>
       <section id="post-content" className="py-4 text-white">
