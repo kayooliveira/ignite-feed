@@ -135,12 +135,21 @@ export function RightContent() {
     setPosts(newPosts)
   }
 
+  function handleDeletePost(id: number) {
+    const findedPost = posts.find(post => post.id === id)
+    if (findedPost && state.id === findedPost.author.id) {
+      const newPosts = posts.filter(post => post.id !== id)
+      setPosts(newPosts)
+    }
+  }
+
   return (
     <main className="flex flex-1 flex-col-reverse gap-4 lg:gap-8">
       {posts.map(post => (
         <Post
           handleLikePost={handleLikePost}
           handleUnlikePost={handleUnlikePost}
+          handleDeletePost={handleDeletePost}
           key={post.author.id}
           post={post}
         />

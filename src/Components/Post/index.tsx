@@ -3,19 +3,26 @@ import ptBR from 'date-fns/esm/locale/pt-BR/index.js'
 import Parser from 'html-react-parser'
 import React, { ChangeEvent, FormEvent, useRef, useState } from 'react'
 import { AiFillLike, AiFillWechat, AiOutlineLike } from 'react-icons/ai'
+import { FaTrash } from 'react-icons/fa'
 
 import { CommentType, PostType } from '../../@types'
 import { useAuth } from '../../Hooks/useAuth'
 import { Comment } from '../Comment'
+import { DeletePostModal } from './DeletePostModal'
 
 interface PostProps {
   post: PostType
   handleLikePost: (id: number) => void
   handleUnlikePost: (id: number) => void
-  handleDeletePost?: (id: number) => void
+  handleDeletePost: (id: number) => void
 }
 
-export function Post({ post, handleLikePost, handleUnlikePost }: PostProps) {
+export function Post({
+  post,
+  handleLikePost,
+  handleUnlikePost,
+  handleDeletePost
+}: PostProps) {
   const [comments, setComments] = useState<CommentType[]>(post.comments)
   const [commentInput, setCommentInput] = useState<string>('')
   const [isLikedPost, setIsLikedPost] = useState(false)
@@ -67,15 +74,21 @@ export function Post({ post, handleLikePost, handleUnlikePost }: PostProps) {
     newCommentRef.current?.focus()
   }
 
+  function deletePost() {
+    handleDeletePost(post.id)
+  }
+
   return (
     <article className="flex-1 rounded-lg bg-backgroundLight p-8">
       <header className="flex w-full flex-row items-start justify-between md:flex-row">
         <div id="post-author" className="flex w-fit flex-1 items-start">
-          <img
-            src={post.author.profilePhoto}
-            alt={post.author.name + ' avatar'}
-            className="h-10 w-10 md:h-16 md:w-16"
-          />
+          <div className="w-fit rounded-lg border-2 border-primary bg-backgroundLight p-1 transition-all hover:-translate-y-1 hover:cursor-pointer">
+            <img
+              src={post.author.profilePhoto}
+              alt={post.author + ' avatar'}
+              className="h-10 w-10 md:h-16 md:w-16"
+            />
+          </div>
           <div id="post-author-info" className="ml-3 flex flex-col">
             <p className="align-top font-bold leading-4 text-white md:text-xl">
               {post.author.name}
@@ -151,6 +164,19 @@ export function Post({ post, handleLikePost, handleUnlikePost }: PostProps) {
           <AiFillWechat className="mr-1 h-6 w-6" />
           <span className="font-bold">Comentar • {comments.length} </span>
         </button>
+        {post.author.id === state.id && (
+          <DeletePostModal
+            trigger={
+              <button
+                className={`flex items-center text-white transition-colors hover:text-primary `}
+              >
+                <FaTrash className="mr-1 h-4 w-4" />
+                <span className="font-bold">Deletar</span>
+              </button>
+            }
+            onSuccess={deletePost}
+          />
+        )}
       </div>
     </article>
   )
