@@ -31,22 +31,23 @@ export function NewPost({ handleCreateNewPost }: NewPostProps) {
             value={postInput}
             onChange={handleChangePostInput}
             placeholder={`O que está pensando, ${state.name.split(' ')[0]}?`}
-            className="w-full resize-none rounded-lg border-[1px] border-primary/50 bg-background p-4 font-bold text-gray-600  outline-none ring-2 ring-transparent ring-offset-2 ring-offset-background focus:border-transparent focus:ring-secondary"
+            className="w-full resize-none rounded-lg border-[1px] border-primary/50 bg-background p-4 font-bold text-gray-600 placeholder-gray-600  outline-none ring-2 ring-transparent ring-offset-2 ring-offset-background focus:border-transparent focus:ring-secondary"
           ></textarea>
           <div className="flex w-full flex-row items-center justify-evenly gap-4 py-4 text-gray-600">
             <button
-              title="Adicionar uma foto"
+              disabled
+              title="Adicionar uma foto ou vídeo (em breve)"
               type="button"
-              className="flex items-center text-xl font-bold transition-colors hover:text-gray-700"
+              className="new-post-action"
             >
               <AiFillCamera className="mr-3 h-10 w-10" />
-              Foto
+              Foto/Video
             </button>
             <button
               disabled
               type="button"
               title="Abrir uma live (em breve)"
-              className="flex items-center text-xl font-bold transition-colors hover:text-gray-700 disabled:cursor-not-allowed disabled:opacity-30"
+              className="new-post-action"
             >
               <AiFillVideoCamera className="mr-3 h-10 w-10" /> Live
             </button>
@@ -54,7 +55,7 @@ export function NewPost({ handleCreateNewPost }: NewPostProps) {
               disabled
               type="button"
               title="Adicionar um sentimento (em breve)"
-              className="hidden items-center text-xl font-bold transition-colors hover:text-gray-700 disabled:cursor-not-allowed disabled:opacity-30 md:flex"
+              className="new-post-action-hidden"
             >
               <AiFillHeart className="mr-3 h-10 w-10" /> Sentimento
             </button>
