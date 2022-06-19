@@ -65,11 +65,11 @@ export function Comment({ comment, handleDeleteComment }: IComment) {
             alt={author.name + ' profile photo'}
           />
           <div>
-            <p className="-mb-2 font-bold text-white">{author.name}</p>
+            <p className="font-bold leading-4 text-white">{author.name}</p>
             <time
               dateTime={formatISO(createdAt)}
               title={commentFormattedDate}
-              className="-mt-2 text-xs text-gray-600"
+              className="text-xs leading-3 text-gray-600"
             >
               {commentFormattedDateFromNow}
             </time>
