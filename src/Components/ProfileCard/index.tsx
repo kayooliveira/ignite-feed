@@ -3,8 +3,8 @@ import React from 'react'
 import { RiPencilLine } from 'react-icons/ri'
 
 import { UserInputTypes } from '../../@types'
-import { AuthActions } from '../../@types/Contexts/AuthContext'
 import stateBackground from '../../Assets/img/user-profile-bg.png'
+import { AuthActions } from '../../Contexts/AuthContext'
 import { useAuth } from '../../Hooks/useAuth'
 import { EditProfileModal } from './Modal'
 
