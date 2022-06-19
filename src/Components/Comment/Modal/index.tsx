@@ -17,6 +17,11 @@ export function Modal({ trigger, onSuccess }: IModal) {
     setIsOpen(!isOpen)
   }
 
+  function confirmAndClose() {
+    onSuccess()
+    toggleModal()
+  }
+
   return (
     <>
       <div onClick={toggleModal}>{trigger}</div>
@@ -40,10 +45,7 @@ export function Modal({ trigger, onSuccess }: IModal) {
                 Cancelar
               </button>
               <button
-                onClick={() => {
-                  onSuccess()
-                  toggleModal()
-                }}
+                onClick={confirmAndClose}
                 autoFocus
                 className="rounded-lg py-4 px-8 text-center font-bold text-red-500 transition-colors hover:bg-background focus:bg-backgroundComment"
               >
