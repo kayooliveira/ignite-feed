@@ -1,6 +1,6 @@
 import React, { createContext, Dispatch, ReactNode, useReducer } from 'react'
 
-import { UserType } from '..'
+import { UserType } from '../@types'
 
 type State = UserType
 
