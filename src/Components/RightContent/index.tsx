@@ -74,7 +74,8 @@ export function RightContent() {
           likes: 1
         }
       ],
-      createdAt: new Date('2022-06-01 06:20:00')
+      createdAt: new Date('2022-06-01 06:20:00'),
+      likes: 12
     },
     {
       id: 2,
@@ -102,7 +103,8 @@ export function RightContent() {
           likes: 28
         }
       ],
-      createdAt: new Date('2022-03-01 14:20:00')
+      createdAt: new Date('2022-03-01 14:20:00'),
+      likes: 6
     }
   ])
 
@@ -114,15 +116,34 @@ export function RightContent() {
         author: state,
         comments: [],
         content,
-        createdAt: new Date()
+        createdAt: new Date(),
+        likes: 0
       }
     ])
+  }
+  function handleLikePost(id: number) {
+    const newPosts = posts.map(post =>
+      post.id === id ? { ...post, likes: post.likes + 1 } : post
+    )
+    setPosts(newPosts)
+  }
+
+  function handleUnlikePost(id: number) {
+    const newPosts = posts.map(post =>
+      post.id === id ? { ...post, likes: post.likes - 1 } : post
+    )
+    setPosts(newPosts)
   }
 
   return (
     <main className="flex flex-1 flex-col-reverse gap-4 lg:gap-8">
       {posts.map(post => (
-        <Post key={post.author.id} {...post} />
+        <Post
+          handleLikePost={handleLikePost}
+          handleUnlikePost={handleUnlikePost}
+          key={post.author.id}
+          post={post}
+        />
       ))}
       <NewPost handleCreateNewPost={handleCreateNewPost} />
     </main>

@@ -1,9 +1,10 @@
-export interface PostType {
+export type PostType = {
   id: number
   author: UserType
   content: string
   comments: CommentType[]
   createdAt: Date
+  likes: number
 }
 export type UserType = {
   id: number
