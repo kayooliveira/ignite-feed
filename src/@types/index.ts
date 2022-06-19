@@ -1,10 +1,11 @@
-export interface Post {
+export interface PostType {
   id: number
-  author: AuthorType
+  author: UserType
   content: string
   comments: CommentType[]
+  createdAt: Date
 }
-export type AuthorType = {
+export type UserType = {
   id: number
   profilePhoto: string
   name: string
@@ -12,9 +13,16 @@ export type AuthorType = {
   company?: string
 }
 
+export type UserInputTypes = {
+  name: string
+  job: string
+  company: string
+  profilePhoto: string
+}
+
 export type CommentType = {
   id: number
-  author: AuthorType
+  author: UserType
   content: string
   createdAt: Date
   likes: number
