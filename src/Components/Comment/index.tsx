@@ -6,7 +6,6 @@ import { FaTrash } from 'react-icons/fa'
 
 import { CommentType } from '../../@types'
 import { useAuth } from '../../Hooks/useAuth'
-import { state } from '../../utils/mock'
 import { Modal } from './Modal'
 
 interface IComment {
