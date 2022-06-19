@@ -2,14 +2,23 @@ import { format, formatDistanceToNow, formatISO } from 'date-fns'
 import ptBR from 'date-fns/esm/locale/pt-BR/index.js'
 import Parser from 'html-react-parser'
 import React, { ChangeEvent, FormEvent, useState } from 'react'
+import { AiFillLike, AiOutlineLike } from 'react-icons/ai'
 
 import { CommentType, PostType } from '../../@types'
 import { useAuth } from '../../Hooks/useAuth'
 import { Comment } from '../Comment'
 
-export function Post(post: PostType) {
+interface PostProps {
+  post: PostType
+  handleLikePost: (id: number) => void
+  handleUnlikePost: (id: number) => void
+  handleDeletePost?: (id: number) => void
+}
+
+export function Post({ post, handleLikePost, handleUnlikePost }: PostProps) {
   const [comments, setComments] = useState<CommentType[]>(post.comments)
   const [commentInput, setCommentInput] = useState<string>('')
+  const [isLikedPost, setIsLikedPost] = useState(false)
   const { state } = useAuth()
   const postDateFormatted = format(post.createdAt, "d 'de' LLL 'às' HH:m'h'", {
     locale: ptBR
@@ -40,6 +49,16 @@ export function Post(post: PostType) {
     setComments(comments.filter(comment => comment.id !== id))
   }
 
+  function likePost() {
+    if (isLikedPost) {
+      handleUnlikePost(post.id)
+      return setIsLikedPost(false)
+    }
+
+    handleLikePost(post.id)
+    setIsLikedPost(true)
+  }
+
   return (
     <article className="rounded-lg bg-backgroundLight p-8">
       <header id="post-header" className="flex flex-wrap justify-between">
@@ -61,7 +80,7 @@ export function Post(post: PostType) {
           </div>
         </div>
 
-        <div id="post-time">
+        <div id="post-time" className="flex flex-col items-end">
           <time
             className="text-gray-600"
             title={postDateFormatted}
@@ -69,6 +88,29 @@ export function Post(post: PostType) {
           >
             publicado há {postDateFromNow}
           </time>
+          <div id="post-actions">
+            <button
+              title={
+                isLikedPost ? 'Desmarcar como gostei' : 'Marcar como gostei'
+              }
+              className="color-gray-600 py-2 font-bold text-gray-600"
+              onClick={likePost}
+            >
+              <div className="gap-2">
+                {isLikedPost ? (
+                  <p className="text-primary">
+                    <AiFillLike className="inline-block h-6 w-6 align-bottom" />{' '}
+                    • {post.likes}
+                  </p>
+                ) : (
+                  <p>
+                    <AiOutlineLike className="inline-block h-6 w-6 align-bottom" />{' '}
+                    • {post.likes}
+                  </p>
+                )}
+              </div>
+            </button>
+          </div>
         </div>
       </header>
       <h4 id="post-content" className="my-4 text-white">
@@ -92,6 +134,7 @@ export function Post(post: PostType) {
           </button>
         )}
       </form>
+
       {comments.map(comment => (
         <Comment
           key={comment.id}
