@@ -20,6 +20,7 @@ export function NewPost({ handleCreateNewPost }: NewPostProps) {
   function handleFormSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     handleCreateNewPost(postInput)
+    setPostInput('')
   }
 
   return (
